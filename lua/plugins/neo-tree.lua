@@ -1,3 +1,6 @@
+function setup()
+  vim.keymap.set('n','<C-b>', ':Neotree filesystem toggle=true<CR>')
+end
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -6,5 +9,6 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
       "3rd/image.nvim",
-    }
+    },
+    config=setup
 }
