@@ -3,7 +3,7 @@ local function setup_mason()
 end
 local function setup_mason_lspconfig()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "lua_ls", "marksman" },
+		ensure_installed = { "lua_ls", "marksman", "powershell_es" },
 	})
 end
 local function setup_lspconfig()
@@ -13,6 +13,10 @@ local function setup_lspconfig()
 		capabilities = capabilities,
 	})
 	lspconfig.marksman.setup({
+		capabilities = capabilities,
+	})
+	lspconfig.powershell_es.setup({
+		bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
 		capabilities = capabilities,
 	})
 	-- Global mappings.
@@ -56,3 +60,4 @@ return {
 	{ "williamboman/mason-lspconfig.nvim", config = setup_mason_lspconfig },
 	{ "neovim/nvim-lspconfig", config = setup_lspconfig },
 }
+
