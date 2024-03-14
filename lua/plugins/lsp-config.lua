@@ -3,7 +3,7 @@ local function setup_mason()
 end
 local function setup_mason_lspconfig()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "lua_ls", "marksman", "powershell_es" },
+		ensure_installed = { "lua_ls", "marksman", "powershell_es","pyright" },
 	})
 end
 local function setup_lspconfig()
@@ -19,6 +19,9 @@ local function setup_lspconfig()
 		bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
 		capabilities = capabilities,
 	})
+  lspconfig.pyright.setup({
+    capabilities = capabilities
+  })
 	-- Global mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 	vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
