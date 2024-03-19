@@ -3,7 +3,7 @@ local function setup_mason()
 end
 local function setup_mason_lspconfig()
 	require("mason-lspconfig").setup({
-		ensure_installed = { "lua_ls", "marksman", "powershell_es","pyright","omnisharp" },
+		ensure_installed = { "lua_ls", "marksman", "powershell_es","pyright","omnisharp","openscad_lsp" },
 	})
 end
 local function setup_lspconfig()
@@ -25,6 +25,9 @@ local function setup_lspconfig()
   lspconfig.omnisharp.setup({
     capabilities=capabilities,
     cmd= {vim.fn.stdpath("data") .. "/mason/bin/omnisharp"},
+  })
+  lspconfig.openscad_lsp.setup({
+    capabilities = capabilities,
   })
 	-- Global mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions
