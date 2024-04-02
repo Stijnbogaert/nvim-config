@@ -1,4 +1,4 @@
-function setup()
+local function setup()
   vim.cmd.colorscheme "catppuccin"
 end
 
