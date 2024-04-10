@@ -21,6 +21,7 @@ local function setup_lspconfig()
 	})
   lspconfig.pyright.setup({
     capabilities = capabilities
+    --cmd= {vim.fn.stdpath("data") .. "/mason/bin/omnisharp"},
   })
   lspconfig.omnisharp.setup({
     capabilities=capabilities,
