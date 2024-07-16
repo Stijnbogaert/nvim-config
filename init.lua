@@ -37,3 +37,11 @@ vim.keymap.set("i", "<A-j>","<Esc>:m +1<CR>==gi" , opts)
 vim.keymap.set("i", "<A-k>","<Esc>:m -2<CR>==gi" , opts)
 vim.keymap.set("v", "<A-k>",":m '<-2<CR>gv=gv" , opts)
 vim.keymap.set("v", "<A-j>",":m '>+1<CR>gv=gv", opts)
+-- copy to clipboard
+vim.keymap.set("n", "<leader>y","\"+y",opts)
+vim.keymap.set("n", "<leader>Y","\"+yg_",opts)
+vim.keymap.set("n", "<leader>yy","\"+yy",opts)
+vim.keymap.set("v", "<leader>y","\"+y",opts)
+
+vim.keymap.set("n","<leader>p","\"+p",opts)
+vim.keymap.set("v","<leader>p","\"+p",opts)
