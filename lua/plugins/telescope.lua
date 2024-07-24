@@ -37,6 +37,11 @@ local function setup()
   vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
   vim.keymap.set("n", "<leader>fp", builtin.registers, {})
   vim.keymap.set("n", "<leader>fr", builtin.lsp_references, {})
+  vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, {})
+  vim.keymap.set("n", "<leader>fd", builtin.lsp_definitions, {})
+  vim.keymap.set("n", "<leader>ft", builtin.lsp_type_definitions, {})
+  vim.keymap.set("n", "<leader>ws", builtin.lsp_workspace_symbols, {})
+  vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
 end
 return {
   { "nvim-telescope/telescope.nvim",           tag = "0.1.5",           dependencies = { "nvim-lua/plenary.nvim" }, config = setup },
