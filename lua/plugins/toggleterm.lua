@@ -8,6 +8,11 @@ local function setup()
     lazygit:toggle()
   end
   vim.keymap.set("n", "<leader>lg", _lazygit_toggle, {noremap = true, silent = true})
+  local yazi = Terminal:new({ cmd = "yazi", hidden = true, direction = "float"})
+  function _yazi_toggle()
+    yazi:toggle()
+  end
+  vim.keymap.set("n", "<leader>yz", _yazi_toggle, {noremap = true, silent = true}) 
   function _G.set_terminal_keymaps()
     local opts = {buffer = 0}
     vim.keymap.set('t', '<C-q>', [[<C-\><C-n>]], opts)
