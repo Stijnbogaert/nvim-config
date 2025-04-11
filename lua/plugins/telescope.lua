@@ -1,6 +1,7 @@
 local function setup_ui_select()
   -- This is your opts table
   require("telescope").setup({
+    pickers = {find_files = {			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },}},
     extensions = {
       ["ui-select"] = {
         require("telescope.themes").get_dropdown({
