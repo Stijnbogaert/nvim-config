@@ -19,7 +19,7 @@ function general()
 	vim.keymap.set("v", "<leader>p", '"+p', opts)
 end
 
-function lsp(event, has_inlay_enabled)
+function lsp(event, has_inlay_hint_enabled)
 	local map = function(keys, func, desc, mode)
 		mode = mode or "n"
 		vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -63,8 +63,22 @@ function lsp(event, has_inlay_enabled)
 
 	-- List the diagnostics
 	map("<leader>le", require("fzf-lua").diagnostics_document, "[l]ist [e]rrors")
+
+	if has_inlay_hint_enabled then
+		map("<leader>th", function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+		end, "[T]oggle Inlay [H]ints")
+	end
+end
+
+function blink()
+	return {
+		preset = "default",
+		["<tab>"] = { "accept" },
+	}
 end
 
 M.general = general
 M.lsp = lsp
+M.blink = blink
 return M
