@@ -1,0 +1,36 @@
+# NVIM Config
+
+heavily uses the MrJacob video series to set up the config as a starting point
+
+## How to configure stuff
+
+formatters: check conform.lua
+
+tooling: lsp.lua, extend the ensure_installed table
+
+## Keymaps
+
+TODO: configure keymaps and list them here
+
+- [ ] conform for formatting
+- [ ] lsp config (refactor out of lsp file)
+- [ ] function signature floats
+
+
+
+## List of plugins
+
+- [x] lsp config
+- [x] fzf-lua
+- [x] dressing
+- [x] treesitter
+- [x] oil
+- [x] mini
+    - [x] statusline
+    - [x] git
+    - [x] diff
+    - [x] icons
+    - [ ] align
+- [x] conform
+- [ ] blink-cmp
+- [ ] project.nvim
