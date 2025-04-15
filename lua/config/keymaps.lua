@@ -29,14 +29,14 @@ function lsp(event, has_inlay_hint_enabled)
 	-- Jump to the definition of the word under your cursor.
 	--  This is where a variable was first declared, or where a function is defined, etc.
 	--  To jump back, press <C-t>.
-	map("gd", require("fzf-lua").lsp_definitions, "[G]oto [D]efinition")
+	map("<leader>gd", require("fzf-lua").lsp_definitions, "[G]oto [D]efinition")
 
 	-- Find references for the word under your cursor.
-	map("gr", require("fzf-lua").lsp_references, "[G]oto [R]eferences")
+	map("<leader>fr", require("fzf-lua").lsp_references, "[G]oto [R]eferences")
 
 	-- Jump to the implementation of the word under your cursor.
 	--  Useful when your language has ways of declaring types without an actual implementation.
-	map("gI", require("fzf-lua").lsp_implementations, "[G]oto [I]mplementation")
+	map("<leader>gi", require("fzf-lua").lsp_implementations, "[G]oto [I]mplementation")
 
 	-- Jump to the type of the word under your cursor.
 	--  Useful when you're not sure what type a variable is and you want to see
@@ -53,7 +53,7 @@ function lsp(event, has_inlay_hint_enabled)
 
 	-- Rename the variable under your cursor.
 	--  Most Language Servers support renaming across files, etc.
-	map("<leader>cr", vim.lsp.buf.rename, "[R]e[n]ame")
+	map("<leader>cr", vim.lsp.buf.rename, "[C]ode: [R]ename")
 
 	-- Execute a code action, usually your cursor needs to be on top of an error
 	-- or a suggestion from your LSP for this to activate.
@@ -61,12 +61,14 @@ function lsp(event, has_inlay_hint_enabled)
 
 	-- WARN: This is not Goto Definition, this is Goto Declaration.
 	--  For example, in C this would take you to the header.
-	map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+	map("<leader>gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 	-- List the diagnostics
 	map("<leader>le", require("fzf-lua").diagnostics_document, "[l]ist [e]rrors")
-	map("<C-space>", vim.lsp.buf.hover, "open the hover float")
-	map("<C-space>", vim.lsp.buf.hover, "open the hover float", "i")
+
+	-- map("<C-space>", vim.lsp.buf.hover, "open the hover float")
+	-- map("<C-space>", vim.lsp.buf.hover, "open the hover float", "i")
+	-- try with K for the time being
 	if has_inlay_hint_enabled then
 		map("<leader>th", function()
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))

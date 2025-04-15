@@ -16,7 +16,7 @@ TODO: configure keymaps and list them here
 - [ ] lsp config (refactor out of lsp file)
 - [ ] function signature floats
 
-resolve the c-space conflict on blink or hover float
+resolve the c-space conflict on blink or hover float, trying `K` for the time being (only in normal mode), c-space is used for blink in edit mode
 
 ## List of plugins
 
