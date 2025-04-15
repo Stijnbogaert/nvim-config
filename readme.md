@@ -16,7 +16,7 @@ TODO: configure keymaps and list them here
 - [ ] lsp config (refactor out of lsp file)
 - [ ] function signature floats
 
-
+resolve the c-space conflict on blink or hover float
 
 ## List of plugins
 
