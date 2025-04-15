@@ -1,7 +1,6 @@
 ---@diagnostic disable: undefined-global
 
 M = {}
-
 function general()
 	-- fzf-lua keymaps
 	local fzf = require("fzf-lua")
@@ -17,6 +16,9 @@ function general()
 	vim.keymap.set("v", "<leader>y", '"+y', opts)
 	vim.keymap.set("n", "<leader>p", '"+p', opts)
 	vim.keymap.set("v", "<leader>p", '"+p', opts)
+
+	-- lazygit
+	vim.keymap.set("n", "<leader>lg", require("snacks").lazygit.open, { desc = "Open [L]azy[G]it" })
 end
 
 function lsp(event, has_inlay_hint_enabled)
@@ -63,7 +65,8 @@ function lsp(event, has_inlay_hint_enabled)
 
 	-- List the diagnostics
 	map("<leader>le", require("fzf-lua").diagnostics_document, "[l]ist [e]rrors")
-
+	map("<C-space>", vim.lsp.buf.hover, "open the hover float")
+	map("<C-space>", vim.lsp.buf.hover, "open the hover float", "i")
 	if has_inlay_hint_enabled then
 		map("<leader>th", function()
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
@@ -74,7 +77,7 @@ end
 function blink()
 	return {
 		preset = "default",
-		["<tab>"] = { "accept" },
+		["<tab>"] = { "accept", "fallback" },
 	}
 end
 
