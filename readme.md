@@ -13,24 +13,37 @@ tooling: lsp.lua, extend the ensure_installed table
 TODO: configure keymaps and list them here
 
 - [ ] conform for formatting
-- [ ] lsp config (refactor out of lsp file)
-- [ ] function signature floats
+- [x] lsp config (refactor out of lsp file)
+- [x] function signature floats
 
 resolve the c-space conflict on blink or hover float, trying `K` for the time being (only in normal mode), c-space is used for blink in edit mode
 
 ## List of plugins
 
-- [x] lsp config
-- [x] fzf-lua
-- [x] dressing
-- [x] treesitter
-- [x] oil
-- [x] mini
-    - [x] statusline
-    - [x] git
-    - [x] diff
-    - [x] icons
-    - [ ] align
-- [x] conform
-- [ ] blink-cmp
 - [ ] project.nvim
+- [ ] mini.surround
+- [x] blink.cmp 
+- [x] conform.nvim 
+- [x] dressing.nvim 
+- [x] fidget.nvim 
+- [x] friendly-snippets 
+- [x] fzf-lua 
+- [x] kanagawa.nvim 
+- [x] lazy.nvim 
+- [x] mason-lspconfig.nvim 
+- [x] mason-tool-installer.nvim 
+- [x] mason.nvim 
+- [x] mini-git 
+- [x] mini.align 
+- [x] mini.comment 
+- [x] mini.diff 
+- [x] mini.icons 
+- [x] mini.statusline 
+- [x] nvim-lspconfig 
+- [x] nvim-treesitter 
+- [x] nvim-treesitter-textobjects 
+- [x] nvim-web-devicons 
+- [x] oil.nvim 
+- [x] snacks.nvim 
+- [x] vim-sleuth 
+- [x] which-key.nvim 
