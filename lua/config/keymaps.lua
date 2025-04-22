@@ -6,6 +6,7 @@ M = {
 		-- fzf-lua keymaps
 		local fzf = require("fzf-lua")
 		vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Open file picker" })
+		vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Search on grep" })
 		--oil
 		vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 		-- diagonstics float
@@ -20,6 +21,9 @@ M = {
 
 		-- lazygit
 		vim.keymap.set("n", "<leader>lg", require("snacks").lazygit.open, { desc = "Open [L]azy[G]it" })
+
+		-- insert text snippets
+		vim.keymap.set("n", "<leader>id", "<CMD>pu=strftime('%Y-%m-%d')<CR>", { desc = "[I]nsert [D]ate" })
 	end,
 
 	mini_surround = function()
@@ -61,14 +65,14 @@ M = {
 		-- Jump to the definition of the word under your cursor.
 		--  This is where a variable was first declared, or where a function is defined, etc.
 		--  To jump back, press <C-t>.
-		map("<leader>gd", require("fzf-lua").lsp_definitions, "[G]oto [D]efinition")
+		map("<leader>fd", require("fzf-lua").lsp_definitions, "[G]oto [D]efinition")
 
 		-- Find references for the word under your cursor.
 		map("<leader>fr", require("fzf-lua").lsp_references, "[G]oto [R]eferences")
 
 		-- Jump to the implementation of the word under your cursor.
 		--  Useful when your language has ways of declaring types without an actual implementation.
-		map("<leader>gi", require("fzf-lua").lsp_implementations, "[G]oto [I]mplementation")
+		map("<leader>fi", require("fzf-lua").lsp_implementations, "[G]oto [I]mplementation")
 
 		-- Jump to the type of the word under your cursor.
 		--  Useful when you're not sure what type a variable is and you want to see
