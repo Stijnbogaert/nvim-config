@@ -5,6 +5,7 @@ return {
 	},
 	init = function()
 		local config = require("nvim-treesitter.configs")
+		local keymaps = require("config.keymaps").treesitter_text_objects
 		config.setup({
 			textobjects = {
 				select = {
@@ -13,18 +14,7 @@ return {
 					-- Automatically jump forward to textobj, similar to targets.vim
 					lookahead = true,
 
-					keymaps = {
-						-- You can use the capture groups defined in textobjects.scm
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ao"] = "@comment.outer",
-						-- You can optionally set descriptions to the mappings (used in the desc parameter of
-						-- nvim_buf_set_keymap) which plugins like which-key display
-						["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-						-- You can also use captures from other query groups like `locals.scm`
-						["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-					},
+					keymaps = keymaps.select,
 					-- You can choose the select mode (default is charwise 'v')
 					--
 					-- Can also be a function which gets passed a table with the keys
@@ -50,12 +40,21 @@ return {
 				},
 				swap = {
 					enable = true,
-					swap_next = {
-						["<leader>a"] = { query = "@parameter.inner", desc = "Swap with next parameter" },
-					},
-					swap_previous = {
-						["<leader>A"] = "@parameter.inner",
-					},
+					swap_next = keymaps.swap.next,
+					swap_previous = keymaps.swap.previous,
+				},
+				move = {
+					enable = true,
+					set_jumps = true, -- whether to set jumps in the jumplist
+					goto_next_start = keymaps.move.next_start,
+					goto_next_end = keymaps.move.next_end,
+					goto_previous_start = keymaps.move.previous_start,
+					goto_previous_end = keymaps.move.previous_end,
+					-- Below will go to either the start or the end, whichever is closer.
+					-- Use if you want more granular movements
+					-- Make it even more gradual by adding multiple queries and regex.
+					goto_next = keymaps.move.next,
+					goto_previous = keymaps.move.previous,
 				},
 			},
 		})
