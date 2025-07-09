@@ -1,3 +1,9 @@
+
+local function fibonacci()
+  local a = 5
+  return 0
+end
+
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
@@ -16,3 +22,4 @@ return {
     },
   },
 }
+

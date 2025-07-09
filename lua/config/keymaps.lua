@@ -5,8 +5,13 @@ M = {
 	general = function()
 		-- fzf-lua keymaps
 		local fzf = require("fzf-lua")
-		vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Open file picker" })
-		vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Search on grep" })
+		vim.keymap.set("n", "<leader>fzf", fzf.builtin, { desc = "[fzf] Open fzf picker picker" })
+		vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "[fzf] Open file picker" })
+		vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "[fzf] Search on grep" })
+		vim.keymap.set("n", "<leader>fp", fzf.registers, { desc = "[fzf] register picker" })
+		vim.keymap.set("n", "<leader>f?", fzf.keymaps, { desc = "[fzf] Search through keymaps" })
+		vim.keymap.set("n", "<leader>fm", fzf.marks, { desc = "[fzf] Search through marks" })
+		vim.keymap.set("n", "<leader>fj", fzf.jumps, { desc = "[fzf] Search through jumps" })
 		--oil
 		vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 		-- diagonstics float
@@ -37,6 +42,8 @@ M = {
 			["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
 			-- You can also use captures from other query groups like `locals.scm`
 			["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+
+			["in"] = { query = "@number.inner", desc = "select the quantity under the cursor" },
 		},
 		move = {
 			next_start = {
@@ -158,6 +165,7 @@ M = {
 
 		-- List the diagnostics
 		map("<leader>le", require("fzf-lua").diagnostics_document, "[l]ist [e]rrors")
+		map("<leader>lwe", require("fzf-lua").diagnostics_workspace, "[l]ist [w]orkspace [e]rrors")
 
 		-- map("<C-space>", vim.lsp.buf.hover, "open the hover float")
 		-- map("<C-space>", vim.lsp.buf.hover, "open the hover float", "i")
@@ -172,6 +180,7 @@ M = {
 	blink = function()
 		return {
 			preset = "default",
+			-- ['<leader>ai'] = require('minuet').make_blink_map,
 			["<tab>"] = { "accept", "fallback" },
 		}
 	end,

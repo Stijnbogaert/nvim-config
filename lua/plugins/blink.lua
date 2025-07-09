@@ -1,7 +1,7 @@
 return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
-	dependencies = { "rafamadriz/friendly-snippets" },
+	dependencies = { "rafamadriz/friendly-snippets", "moyiz/blink-emoji.nvim", "milanglacier/minuet-ai.nvim", "milanglacier/minuet-ai.nvim" },
 
 	-- use a release tag to download pre-built binaries
 	version = "1.*",
@@ -34,12 +34,38 @@ return {
 		},
 
 		-- (Default) Only show the documentation popup when manually triggered
-		completion = { documentation = { auto_show = false } },
+		completion = { documentation = { auto_show = false }, trigger = { prefetch_on_insert = false } },
 		signature = { enabled = true },
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer", "emoji" },
+			providers = {
+				emoji = {
+					module = "blink-emoji",
+					name = "Emoji",
+					score_offset = 15, -- Tune by preference
+					opts = { insert = true }, -- Insert emoji (default) or complete its name
+					should_show_items = function()
+						return vim.tbl_contains(
+							-- Enable emoji completion only for git commits and markdown.
+							-- By default, enabled for all file-types.
+
+							{ "gitcommit", "markdown", "just" },
+							vim.o.filetype
+						)
+					end,
+				},
+				-- minuet = {
+				-- 	name = 'minuet',
+				-- 	module = 'minuet.blink',
+				--             			async = true,
+				--             			-- Should match minuet.config.request_timeout * 1000,
+				--             			-- since minuet.config.request_timeout is in seconds
+				--             			timeout_ms = 3000,
+				--             			score_offset = 50, -- Gives minuet higher priority among suggestions
+				-- },
+			},
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
