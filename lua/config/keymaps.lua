@@ -24,6 +24,14 @@ M = {
 		vim.keymap.set("n", "<leader>p", '"+p', opts)
 		vim.keymap.set("v", "<leader>p", '"+p', opts)
 
+		-- copy path
+		vim.keymap.set(
+			"n",
+			"<leader>yp",
+			"<CMD>let @+=@%<CR>",
+			{ desc = "[Y]ank [P]ath. Yank the path to the clipboard" }
+		)
+
 		-- lazygit
 		vim.keymap.set("n", "<leader>lg", require("snacks").lazygit.open, { desc = "Open [L]azy[G]it" })
 
