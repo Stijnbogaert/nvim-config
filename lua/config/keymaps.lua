@@ -32,6 +32,9 @@ M = {
 			{ desc = "[Y]ank [P]ath. Yank the path to the clipboard" }
 		)
 
+		-- Jump back
+		vim.keymap.set("n", "<leader>b", "<c-o>", { desc = "jump [b]ack" })
+
 		-- lazygit
 		vim.keymap.set("n", "<leader>lg", require("snacks").lazygit.open, { desc = "Open [L]azy[G]it" })
 
