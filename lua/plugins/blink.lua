@@ -1,7 +1,12 @@
 return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
-	dependencies = { "rafamadriz/friendly-snippets", "moyiz/blink-emoji.nvim", "milanglacier/minuet-ai.nvim", "milanglacier/minuet-ai.nvim" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"moyiz/blink-emoji.nvim",
+		"milanglacier/minuet-ai.nvim",
+		"milanglacier/minuet-ai.nvim",
+	},
 
 	-- use a release tag to download pre-built binaries
 	version = "1.*",
@@ -39,8 +44,13 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "emoji" },
+			default = { "lsp", "path", "snippets", "buffer", "emoji", "mtg" },
 			providers = {
+				mtg = {
+					name = "Foo",
+					module = "blink-mtg", -- blink.cmp will call `require('your-source').new(...)`
+					opts = { some_option = "some value" }, -- passed to `source.new(opts)`
+				},
 				emoji = {
 					module = "blink-emoji",
 					name = "Emoji",
