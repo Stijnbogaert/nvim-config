@@ -3,8 +3,8 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 	},
-	init = function()
-		local config = require("nvim-treesitter.configs")
+	config = function()
+		local config = require("nvim-treesitter-textobjects")
 		local keymaps = require("config.keymaps").treesitter_text_objects
 		config.setup({
 			textobjects = {
